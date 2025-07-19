@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - TicTacToe</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav>
+    <ul>
+      <li>TicTacToe</li>
+    </ul>
+  </nav>
+
+  <div class="login-container">
+    <h2>Enter Your Name</h2>
+    <form onsubmit="return false">
+      <label for="playerName" class="sr-only">Player Name</label>
+      <input type="text" id="playerName" placeholder="Player Name" required autocomplete="off" />
+
+      <h3>Select Game Mode</h3>
+      <div class="mode-buttons">
+        <button type="button" onclick="startGame('single')">Single Player</button>
+        <button type="button" onclick="startGame('multi')">Two Player</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function startGame(mode) {
+      const name = document.getElementById('playerName').value.trim();
+      if (!name) {
+        alert('Please enter your name!');
+        return;
+      }
+      localStorage.setItem('playerName', name);
+      localStorage.setItem('mode', mode);
+      localStorage.setItem('scoreX', 0);
+      localStorage.setItem('scoreO', 0);
+      window.location.href = "game.html";
+    }
+  </script>
+</body>
+</html>
